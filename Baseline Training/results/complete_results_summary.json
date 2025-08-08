@@ -1,0 +1,35 @@
+{
+  "model_info": {
+    "architecture": "ResNet50 + GRU",
+    "input_size": "224x224",
+    "max_sequence_length": 20,
+    "feature_dimensions": 2048,
+    "total_parameters": 416914
+  },
+  "dataset_info": {
+    "total_videos": 855,
+    "classes": [],
+    "successful_extractions": 0,
+    "train_samples": 0,
+    "test_samples": 0
+  },
+  "training_config": {
+    "epochs_target": 50,
+    "epochs_actual": 0,
+    "batch_size": 16,
+    "feature_batch_size": 8,
+    "early_stopping": true,
+    "learning_rate_reduction": true
+  },
+  "performance": {
+    "test_accuracy": "Not available",
+    "best_val_accuracy": "Not available",
+    "final_train_accuracy": "Not available"
+  },
+  "colab_info": {
+    "platform": "Google Colab",
+    "gpu_used": "/device:GPU:0",
+    "tensorflow_version": "2.19.0",
+    "keras_version": "3.10.0"
+  }
+}
