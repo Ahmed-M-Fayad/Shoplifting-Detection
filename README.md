@@ -1,14 +1,14 @@
 # 🛡️ Shoplifting Detection Using Deep Learning and Computer Vision
 
 <div align="center">
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
   <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white" alt="OpenCV">
-  <img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=Keras&logoColor=white" alt="Keras">
 </div>
 
 <div align="center">
-  <h3>🚧 <strong>Project in Development</strong> 🚧</h3>
+  <h3>🚀 <strong>I3D Implementation Complete</strong> 🚀</h3>
   <p><em>AI-powered video analysis system for retail security and loss prevention</em></p>
 </div>
 
@@ -19,7 +19,9 @@
 This project implements a comprehensive shoplifting detection system that analyzes surveillance video footage to identify suspicious behavior patterns in retail environments. The system combines state-of-the-art computer vision and sequence modeling techniques to provide real-time alerts for potential shoplifting incidents.
 
 ### Key Features
-- **Real-time Video Analysis** processing live surveillance feeds
+- **3D Convolutional Analysis** using I3D (Inflated 3D ConvNet) architecture
+- **Spatio-temporal Feature Extraction** capturing both spatial and temporal information
+- **Memory-efficient Processing** with batch processing and feature caching
 - **Behavior Pattern Recognition** identifying abnormal activities and movements
 - **Multi-class Detection** distinguishing normal shopping from suspicious behavior
 - **Scalable Architecture** handling multiple camera feeds simultaneously
@@ -30,14 +32,20 @@ This project implements a comprehensive shoplifting detection system that analyz
 ## 🚧 Development Status
 
 **✅ Completed:**
-- Baseline model architecture (ResNet50 + GRU)
-- Video preprocessing and feature extraction pipeline
-- Initial training experiments and validation
+- ✅ I3D-based feature extraction implementation
+- ✅ Video preprocessing and spatio-temporal analysis pipeline
+- ✅ Memory-efficient batch processing system
+- ✅ Feature normalization and dataset balancing
+- ✅ MLP classifier training on I3D features
+- ✅ Comprehensive evaluation framework
+- ✅ Baseline model architecture (ResNet50 + GRU)
+- ✅ Initial training experiments and validation
 
 **🔄 In Progress:**
 - Model optimization and hyperparameter tuning
-- Advanced architecture exploration (Transformers, 3D CNNs)
+- Advanced architecture exploration (Transformers, pretrained I3D)
 - Performance evaluation and bias testing
+- Real-time processing optimization
 
 **📋 Upcoming:**
 - Real-time deployment system
@@ -49,7 +57,23 @@ This project implements a comprehensive shoplifting detection system that analyz
 
 ## 🏗️ System Architecture
 
-### Deep Learning Pipeline
+### I3D-Based Pipeline (Current Implementation)
+
+**Processing Flow:**
+1. **Video Preprocessing** → Frame extraction (16 frames at 224×224) and normalization
+2. **I3D Feature Extraction** → 3D CNN-based spatio-temporal analysis
+3. **Feature Processing** → Standardization and batch processing
+4. **Behavior Classification** → MLP classifier for suspicious activity detection
+5. **Alert Generation** → Binary classification with confidence scores
+
+**Technical Implementation:**
+- **I3D Architecture**: 3D convolutional layers with adaptive pooling
+- **Feature Dimension**: 1024-dimensional feature vectors
+- **Memory Management**: Disk-based feature caching for large datasets
+- **Batch Processing**: Configurable batch sizes for memory efficiency
+- **Dataset Balancing**: Oversampling for class balance
+
+### Legacy Deep Learning Pipeline
 
 **Processing Flow:**
 1. **Video Preprocessing** → Frame extraction and normalization
@@ -58,15 +82,18 @@ This project implements a comprehensive shoplifting detection system that analyz
 4. **Behavior Classification** → Multi-class suspicious activity detection
 5. **Alert Generation** → Real-time notifications with timestamps
 
-**Technical Approach:**
-- **Computer Vision**: Advanced image processing for object tracking
-- **Deep Learning**: Neural networks trained on retail surveillance data
-- **Behavioral Analysis**: Pattern recognition for normal vs. suspicious behaviors
-- **Temporal Modeling**: Understanding action sequences over time
-
 ---
 
 ## 📊 Model Architecture & Performance
+
+### Current I3D Implementation
+| Component | Architecture | Details |
+|-----------|-------------|---------|
+| **Feature Extractor** | I3D (3D CNN) | Spatio-temporal feature extraction |
+| **Preprocessing** | 16 frames × 224×224 | RGB video sequences |
+| **Feature Dimension** | 1024 | Dense feature representation |
+| **Classifier** | MLP (3-layer) | Binary classification with dropout |
+| **Memory Management** | Disk Caching | Efficient large dataset handling |
 
 ### Baseline Model
 | Component | Architecture | Details |
@@ -89,13 +116,15 @@ This project implements a comprehensive shoplifting detection system that analyz
 ### Current Development Focus
 
 **Advanced Architectures:**
+- ✅ **I3D Implementation**: Enhanced spatiotemporal understanding
 - **Vision Transformers**: Enhanced temporal understanding
-- **3D CNNs**: Improved spatiotemporal modeling
+- **Pretrained I3D Models**: Transfer learning from large video datasets
 - **Multi-Modal Analysis**: Audio + visual integration
 - **Edge Optimization**: Real-time processing on resource-constrained devices
 
 **Dataset & Training:**
 - 🎬 **Curated Datasets**: Retail environments with privacy considerations
+- ✅ **Dataset Balancing**: Automated oversampling for class balance
 - 🏷️ **Expert Annotation**: Security professional labeling
 - 🔄 **Advanced Augmentation**: Robust video augmentation techniques
 - ✅ **Cross-validation**: Testing across different store layouts
@@ -126,6 +155,32 @@ Pattern analysis for understanding theft trends and prevention strategies.
 
 ---
 
+## 🛠️ Technical Implementation
+
+### I3D Feature Extraction
+```python
+# Memory-efficient video processing
+MAX_FRAMES = 16
+IMG_SIZE = 224
+BATCH_SIZE_PROCESSING = 2  # Conservative for memory
+BATCH_SIZE_TRAINING = 32   # Larger for feature training
+
+# I3D architecture with 3D convolutions
+- 3D Conv layers for spatio-temporal analysis
+- Batch normalization and ReLU activations
+- Adaptive average pooling for fixed output size
+- 1024-dimensional feature vectors
+```
+
+### System Capabilities
+- **Video Processing**: Extract 16 frames at 224×224 resolution
+- **Memory Efficiency**: Disk-based feature caching system
+- **Batch Processing**: Configurable batch sizes for different hardware
+- **Dataset Handling**: Automatic balancing and train/validation/test splits
+- **Feature Normalization**: StandardScaler for consistent feature ranges
+
+---
+
 ## 🛡️ Ethical AI & Privacy
 
 ### Privacy Protection
@@ -143,8 +198,9 @@ Pattern analysis for understanding theft trends and prevention strategies.
 
 ## 🚀 Technical Highlights
 
-- **Hybrid AI Approach**: Computer vision + behavioral analysis
-- **Real-world Deployment**: Designed for production retail environments
+- **I3D Architecture**: Advanced 3D convolutional networks for video understanding
+- **Memory Optimization**: Efficient processing of large video datasets
+- **Spatio-temporal Analysis**: Simultaneous spatial and temporal feature extraction
 - **Scalable Infrastructure**: Multi-camera feed processing capability
 - **Responsible AI**: Built-in privacy protection and bias mitigation
 
@@ -152,13 +208,15 @@ Pattern analysis for understanding theft trends and prevention strategies.
 
 ## 🗺️ Development Roadmap
 
-### Phase 1: Foundation (Current)
+### Phase 1: Foundation ✅ (Complete)
+- ✅ I3D model implementation and feature extraction
+- ✅ Memory-efficient processing pipeline
 - ✅ Baseline model implementation
-- 🔄 Architecture optimization and comparison
-- 📋 Comprehensive evaluation framework
+- ✅ Architecture optimization and comparison
+- ✅ Comprehensive evaluation framework
 
-### Phase 2: Enhancement
-- 📋 Advanced model architectures
+### Phase 2: Enhancement (Current)
+- 🔄 Advanced I3D model architectures and pretrained weights
 - 📋 Real-time processing optimization
 - 📋 Multi-camera synchronization
 
@@ -202,7 +260,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **Research Community**: Computer vision and behavioral analysis research
-- **Open Source Libraries**: TensorFlow, OpenCV, Keras, and supporting frameworks
+- **Open Source Libraries**: PyTorch, TensorFlow, OpenCV, and supporting frameworks
 - **Retail Security Experts**: Domain knowledge and real-world insights
 - **Privacy Advocates**: Guidance on responsible AI development
 
@@ -211,7 +269,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
   <strong>Advanced AI Research for Retail Security and Loss Prevention</strong>
   <br><br>
-  <img src="https://img.shields.io/badge/🚧_Status-In_Development-yellow?style=for-the-badge" alt="In Development">
+  <img src="https://img.shields.io/badge/🚀_I3D-Implemented-success?style=for-the-badge" alt="I3D Implemented">
   <img src="https://img.shields.io/badge/🎯_Goal-Production_Ready-blue?style=for-the-badge" alt="Production Ready">
   <img src="https://img.shields.io/badge/🛡️_Focus-Responsible_AI-green?style=for-the-badge" alt="Responsible AI">
 </div>
